@@ -2,6 +2,19 @@ body {
   background-color: goldenrod;
 }
 
+#container {
+
+}
+
+#left {
+  float: left;
+  width: 350px;
+}
+
+#right {
+  float: left;
+}
+
 .keyboard {
   padding-top: 1em;
 }

@@ -7,90 +7,135 @@
   <body>
     <h1>Mavis Freakin' Teaches Typing</h1>
 
-    <div>
-      score: <span id="timer">0.000</span>
-    </div>
+    <div id="container">
+      <div id="left">
+        <img src="./img/mavis2.webp" />
 
-    <div>
-      difficulty:
-      <input id="difficulty" type="range" min="0" max="100" value="10" />
-      <button id="go">go!</button>
-    </div>
+        <p>Bro! Welcome. I'm Mavis. Are you ready to freakin' type?!</p>
 
-    <div id="bank">
-      <div id="target">the quick brown fox jumped over the lazy dog</div>
-      <div id="yours"></div>
-    </div>
+        <p>
+          Careful. Some of the keys have been switched around from what you're used to.
+          Use the slider to adjust the difficulty and find where you feel comfortable.
+        </p>
 
-    <div id="scrambled" class="keyboard">
-      <div class="row">
-        <div class="letter">q</div>
-        <div class="letter">w</div>
-        <div class="letter">e</div>
-        <div class="letter">r</div>
-        <div class="letter">t</div>
-        <div class="letter">y</div>
-        <div class="letter">u</div>
-        <div class="letter">i</div>
-        <div class="letter">o</div>
-        <div class="letter">p</div>
-      </div>
-      <div class="row row-two">
-        <div class="letter">a</div>
-        <div class="letter">s</div>
-        <div class="letter">d</div>
-        <div class="letter">f</div>
-        <div class="letter">g</div>
-        <div class="letter">h</div>
-        <div class="letter">j</div>
-        <div class="letter">k</div>
-        <div class="letter">l</div>
+        <p>
+          You'll probably need to refresh the page between each attempt. Things get pretty sloppy around here!
+        </p>
+
+        <p>
+          Moo hollow! 🤙
+        </p>
+
+        <div>
+          Level 1
+          <audio controls src="./01-level.m4a"></audio>
+        </div>
+
+        <div>
+          Level 2
+          <audio controls src="./02-level.m4a"></audio>
+        </div>
+
+        <div>
+          Level 3
+          <audio controls src="./03-level-username-and-password.m4a"></audio>
+        </div>
       </div>
 
-      <div class="row row-three">
-        <div class="letter">z</div>
-        <div class="letter">x</div>
-        <div class="letter">c</div>
-        <div class="letter">v</div>
-        <div class="letter">b</div>
-        <div class="letter">n</div>
-        <div class="letter">m</div>
-      </div>
-    </div>
+      <div id="right">
+        <div>
+          time: <span id="timer">0.000</span>
+        </div>
 
-    <div id="original" class="keyboard">
-      <div class="row">
-        <div class="letter">q</div>
-        <div class="letter">w</div>
-        <div class="letter">e</div>
-        <div class="letter">r</div>
-        <div class="letter">t</div>
-        <div class="letter">y</div>
-        <div class="letter">u</div>
-        <div class="letter">i</div>
-        <div class="letter">o</div>
-        <div class="letter">p</div>
-      </div>
-      <div class="row row-two">
-        <div class="letter">a</div>
-        <div class="letter">s</div>
-        <div class="letter">d</div>
-        <div class="letter">f</div>
-        <div class="letter">g</div>
-        <div class="letter">h</div>
-        <div class="letter">j</div>
-        <div class="letter">k</div>
-        <div class="letter">l</div>
-      </div>
+        <div>
+          difficulty:
+          <input id="difficulty" type="range" min="0" max="100" value="10" />
+          <button id="go">go!</button>
+        </div>
 
-      <div class="row row-three">
-        <div class="letter">z</div>
-        <div class="letter">x</div>
-        <div class="letter">c</div>
-        <div class="letter">v</div>
-        <div class="letter">b</div>
-        <div class="letter">n</div>
-        <div class="letter">m</div>
+        <div id="bank">
+          <div>
+            🏳 <span id="target">the quick brown fox jumped over the lazy dog</span>
+          </div>
+            
+          <div>
+            🏁 <span id="yours"></span>
+          </div>
+        </div>
+
+        <div id="scrambled" class="keyboard">
+          <div>Virtual Keyboad</div>
+          <div class="row">
+            <div class="letter">q</div>
+            <div class="letter">w</div>
+            <div class="letter">e</div>
+            <div class="letter">r</div>
+            <div class="letter">t</div>
+            <div class="letter">y</div>
+            <div class="letter">u</div>
+            <div class="letter">i</div>
+            <div class="letter">o</div>
+            <div class="letter">p</div>
+          </div>
+          <div class="row row-two">
+            <div class="letter">a</div>
+            <div class="letter">s</div>
+            <div class="letter">d</div>
+            <div class="letter">f</div>
+            <div class="letter">g</div>
+            <div class="letter">h</div>
+            <div class="letter">j</div>
+            <div class="letter">k</div>
+            <div class="letter">l</div>
+          </div>
+
+          <div class="row row-three">
+            <div class="letter">z</div>
+            <div class="letter">x</div>
+            <div class="letter">c</div>
+            <div class="letter">v</div>
+            <div class="letter">b</div>
+            <div class="letter">n</div>
+            <div class="letter">m</div>
+          </div>
+        </div>
+
+        <div id="original" class="keyboard">
+          <div>Physical Keyboad (a reminder)</div>
+          <div class="row">
+            <div class="letter">q</div>
+            <div class="letter">w</div>
+            <div class="letter">e</div>
+            <div class="letter">r</div>
+            <div class="letter">t</div>
+            <div class="letter">y</div>
+            <div class="letter">u</div>
+            <div class="letter">i</div>
+            <div class="letter">o</div>
+            <div class="letter">p</div>
+          </div>
+          <div class="row row-two">
+            <div class="letter">a</div>
+            <div class="letter">s</div>
+            <div class="letter">d</div>
+            <div class="letter">f</div>
+            <div class="letter">g</div>
+            <div class="letter">h</div>
+            <div class="letter">j</div>
+            <div class="letter">k</div>
+            <div class="letter">l</div>
+          </div>
+
+          <div class="row row-three">
+            <div class="letter">z</div>
+            <div class="letter">x</div>
+            <div class="letter">c</div>
+            <div class="letter">v</div>
+            <div class="letter">b</div>
+            <div class="letter">n</div>
+            <div class="letter">m</div>
+          </div>
+        </div>
       </div>
     </div>
   </body>
