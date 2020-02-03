@@ -1,0 +1,30 @@
+body {
+  background-color: goldenrod;
+}
+
+.keyboard {
+  padding-top: 1em;
+}
+
+.letter {
+  display: inline-block;
+  background-color: white;
+  border: solid black 1px;
+  width: 1em;
+  height: 1em;
+  text-align: center;
+  margin: 1px;
+}
+
+.hidden {
+  background-color: default;
+  border: none;
+}
+
+.row-two {
+  padding-left: .5em;
+}
+
+.row-three {
+  padding-left: 1.5em;
+}
