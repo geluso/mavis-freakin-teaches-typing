@@ -3,12 +3,30 @@
 // dude. yo what's up. I'm Mavis. I'm going to freaking teach you typing!!
 // first level you type three rows qwertyuiop asdfghjkl zxcvbnm
 // alphabet letter
+// name idea: Dvowreck
 const ALPHABET = "qwertyuiopasdfghjklzxcvbnm"
+const PHRASES = [
+  "the quick brown fox jumped over the lazy dog",
+  "four score and seven years ago",
+]
+
+let IS_FIRST = true
 
 document.addEventListener('DOMContentLoaded', main)
 
 function main() {
-  let letters = scramble()
+  generate()
+
+  const goButton = document.getElementById('go')
+  goButton.addEventListener('click', generate)
+}
+
+function generate() {
+  let slider = document.getElementById('difficulty')
+  let difficulty = slider.value
+  difficulty = parseInt(difficulty, 10) / parseInt(slider.max, 10)
+
+  let letters = scramble(difficulty)
 
   const originalKeyboard = document.getElementById('original')
   const scrambledKeyboard = document.getElementById('scrambled')
@@ -16,18 +34,30 @@ function main() {
   displayScrambledKeyboard(ALPHABET, originalKeyboard)
   mappings = displayScrambledKeyboard(letters, scrambledKeyboard)
 
-  document.addEventListener('keypress', ev => {
-    handleKeyPress(ev, mappings)
-  })
+  let pressHandler = ev => handleKeyPress(ev, mappings)
+  let downHandler = ev => handleKeyDown(ev, mappings)
 
-  document.addEventListener('keydown', ev => {
-    handleKeyDown(ev, mappings)
-  })
+  // TODO find out how to remove handlers to prevent multiple keypress readings
+  document.removeEventListener('keypress', pressHandler)
+  document.addEventListener('keypress', pressHandler)
+
+  document.removeEventListener('keypress', downHandler)
+  document.addEventListener('keydown', downHandler)
+
+  if (!IS_FIRST) {
+    initTimer()
+  }
 }
 
-function scramble() {
+function scramble(difficulty) {
   const letters = ALPHABET.split('')
   letters.forEach((letter, index)=> {
+    // only swap letters if they are within the current difficulty
+    // affects only how many letters are swapped, not WHAT letters are swapped
+    if (Math.random() > difficulty) {
+      return
+    }
+
     const swapIndex = Math.floor(Math.random() * letters.length)
     const otherLetter = letters[swapIndex]
 
@@ -69,6 +99,11 @@ function displayScrambledKeyboard(letters, targetKeyboard) {
     element.className = 'letter'
     element.textContent = letters[i]
 
+    // highlight letters that have been swapped
+    if (realKeyboardLetter !== scrambledKeyboardLetter) {
+      element.classList.add('swapped')
+    }
+
     row.appendChild(element)
   }
 
@@ -76,6 +111,11 @@ function displayScrambledKeyboard(letters, targetKeyboard) {
 }
 
 function handleKeyPress(ev, mappings) {
+  if (IS_FIRST) {
+    IS_FIRST = false
+    initTimer()
+  }
+
   const target = document.getElementById('target')
   const yours = document.getElementById('yours')
 
@@ -101,4 +141,26 @@ function handleKeyDown(ev) {
     yours.textContent = yours.textContent.substr(0, yours.textContent.length - 1)
     return
   }
+}
+
+function initTimer() {
+  const timer = document.getElementById('timer')
+  const start = (new Date()).getTime()
+
+  const intervalId = setInterval(() => {
+    const target = document.getElementById('target')
+    const yours = document.getElementById('yours')
+
+    if (target.textContent === yours.textContent) {
+      clearInterval(intervalId)
+    }
+
+    const now = (new Date()).getTime()
+    const delta = now - start
+
+    const thousands = Math.floor(delta / 1000)
+    const decimal = delta % 1000
+
+    timer.textContent = thousands + '.' + decimal
+  })
 }
