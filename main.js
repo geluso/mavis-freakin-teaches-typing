@@ -137,6 +137,12 @@ function displayScrambledKeyboard(letters, targetKeyboard) {
   })
 
   row1.appendChild(backspace)
+  
+  // attach click listener to virtual space button
+  const space = document.getElementById('space')
+  space.addEventListener('click', _ => {
+    handleKeyPress({key: ' '}, keyMappings)
+  })
 
   return keyMappings
 }
