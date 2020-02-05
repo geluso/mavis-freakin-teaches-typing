@@ -42,6 +42,20 @@ body {
   padding-left: 1.5em;
 }
 
+.row-four {
+  padding-left: 24px;
+}
+
+.letter.backspace {
+  height: 22px;
+  margin-bottom: -8px;
+}
+
+.letter.space {
+  height: .8em;
+  width: 136px;
+}
+
 .swapped {
   background-color: #ffcccc;
 }

@@ -10,15 +10,31 @@ const PHRASES = [
   "four score and seven years ago",
 ]
 
+const BACKSPACE = '🔙'
+const CURSOR_BLINK_DELAY = 600
+
 let IS_FIRST = true
 
 document.addEventListener('DOMContentLoaded', main)
 
 function main() {
   generate()
+  cursorBlink()
 
   const goButton = document.getElementById('go')
   goButton.addEventListener('click', generate)
+}
+
+function cursorBlink() {
+  const cursor = document.getElementById('cursor')
+  setInterval(_ => {
+    console.log('blink')
+    if (cursor.style.visibility === 'hidden') {
+      cursor.style.visibility = 'visible'
+    } else {
+      cursor.style.visibility = 'hidden'
+    }
+  }, CURSOR_BLINK_DELAY)
 }
 
 function generate() {
@@ -104,8 +120,23 @@ function displayScrambledKeyboard(letters, targetKeyboard) {
       element.classList.add('swapped')
     }
 
+    element.addEventListener('click', _ => {
+      handleKeyPress({key: ALPHABET[i]}, keyMappings)
+    })
+
     row.appendChild(element)
   }
+
+  // append virtual backspace button
+  const backspace = document.createElement('div')
+  backspace.className = 'letter backspace'
+  backspace.textContent = BACKSPACE
+
+  backspace.addEventListener('click', _ => {
+    handleKeyDown({key: BACKSPACE}, keyMappings)
+  })
+
+  row1.appendChild(backspace)
 
   return keyMappings
 }
@@ -130,14 +161,12 @@ function handleKeyPress(ev, mappings) {
     virtualLetter = physicalLetter
   }
 
-  console.log(ev, ev.key)
-
   yours.textContent += virtualLetter
 }
 
 function handleKeyDown(ev) {
   const yours = document.getElementById('yours')
-  if (ev.key === "Backspace") {
+  if (ev.key === 'Backspace' || ev.key === BACKSPACE) {
     yours.textContent = yours.textContent.substr(0, yours.textContent.length - 1)
     return
   }
