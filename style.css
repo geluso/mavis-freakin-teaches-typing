@@ -2,19 +2,6 @@ body {
   background-color: goldenrod;
 }
 
-#container {
-
-}
-
-#left {
-  float: left;
-  width: 350px;
-}
-
-#right {
-  float: left;
-}
-
 .keyboard {
   padding-top: 1em;
 }
@@ -58,4 +45,18 @@ body {
 
 .swapped {
   background-color: #ffcccc;
+}
+
+/* 
+ * how to prevent text from being selected
+ * https://stackoverflow.com/a/4407335/735468
+ * */
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+ -khtml-user-select: none; /* Konqueror HTML */
+ -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+  supported by Chrome, Opera and Firefox */
 }
